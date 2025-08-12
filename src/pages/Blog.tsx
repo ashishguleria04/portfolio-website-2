@@ -1,6 +1,8 @@
 import { SEO } from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { Newspaper } from "lucide-react";
 import blog1 from "@/assets/blog1.jpg";
 import blog2 from "@/assets/blog2.jpg";
 import blog3 from "@/assets/blog3.jpg";
@@ -44,6 +46,13 @@ const Blog = () => {
         <header className="mb-10">
           <h1 className="text-4xl font-extrabold tracking-tight font-display">Blog</h1>
           <p className="mt-2 text-muted-foreground">Notes on design systems, motion, and modern frontend.</p>
+          <div className="mt-3">
+            <Button asChild variant="outline" className="hover-scale">
+              <a href="https://aashiishh.hashnode.dev/" target="_blank" rel="noopener" aria-label="Read more on Ashish's Hashnode blog">
+                <Newspaper className="mr-2" /> Visit my external blog
+              </a>
+            </Button>
+          </div>
         </header>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((p, idx) => (

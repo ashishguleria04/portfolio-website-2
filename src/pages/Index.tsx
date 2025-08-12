@@ -10,6 +10,9 @@ import p2 from "@/assets/project2.jpg";
 import p3 from "@/assets/project3.jpg";
 import { toast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
+import { Mail, Linkedin, Github, Twitter, FileText } from "lucide-react";
+import leetcodeLogo from "@/assets/leetcode.svg";
+import gfgLogo from "@/assets/geeksforgeeks.svg";
 
 const Index = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,8 +29,8 @@ const Index = () => {
   return (
     <main className="min-h-screen">
       <SEO
-        title="Modern Portfolio | Developer & Designer"
-        description="Sleek single-page portfolio with projects, about, contact, and blog. Dark/light themes with tasteful animations."
+        title="Ashish Guleria | Software Engineer & Full Stack Developer"
+        description="Portfolio of Ashish Guleria: Software Engineer & Full Stack Web Developer. Projects, about, contact, and blog."
         type="website"
       />
 
@@ -41,10 +44,10 @@ const Index = () => {
           >
             <p className="text-sm text-muted-foreground mb-3">Available for freelance</p>
             <h1 className="text-5xl sm:text-6xl font-extrabold leading-[1.1] tracking-tight font-display">
-              Your Name
+              Ashish Guleria
             </h1>
             <p className="mt-4 text-lg text-muted-foreground max-w-prose">
-              Frontend engineer crafting elegant, performant interfaces with motion and clarity.
+              Software Engineer & Full Stack Web Developer
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild variant="hero" className="hover-scale">
@@ -54,7 +57,7 @@ const Index = () => {
                 <Link to="/blog">Read the blog</Link>
               </Button>
               <Button asChild variant="outline">
-                <a href="/resume.pdf" download>
+                <a href="https://drive.google.com/file/d/1AfCCeVgSXvhjuefcNG3TWm5yYhpFj8uv/view" target="_blank" rel="noopener">
                   Download resume
                 </a>
               </Button>
@@ -67,9 +70,14 @@ const Index = () => {
             className="justify-self-center"
           >
             <div className="relative size-40 sm:size-48 rounded-full overflow-hidden ring-2 ring-ring shadow-elevated">
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -inset-6 rounded-full opacity-60 blur-2xl"
+                style={{ background: "radial-gradient(closest-side, hsl(var(--brand) / 0.18), transparent 70%)" }}
+              />
               <img
                 src={avatar}
-                alt="Professional avatar portrait"
+                alt="Ashish Guleria portrait"
                 loading="eager"
                 className="h-full w-full object-cover"
               />
@@ -85,24 +93,21 @@ const Index = () => {
           <p className="text-muted-foreground mt-2">Selected work with thoughtful details, gradients, and motion.</p>
         </header>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <ProjectCard
-            image={p1}
-            title="Analytics Dashboard"
-            description="A modular analytics experience with realtime charts and smooth transitions."
-            tags={["React", "Recharts", "Design System"]}
-          />
-          <ProjectCard
-            image={p2}
-            title="Mobile App UI"
-            description="Dark-to-blue accent UI with delightful interactions and gestures."
-            tags={["React Native", "Motion", "Accessibility"]}
-          />
-          <ProjectCard
-            image={p3}
-            title="Landing Page"
-            description="High-conversion hero with gradient CTAs and subtle parallax."
-            tags={["Vite", "Tailwind", "SEO"]}
-          />
+          <ProjectCard image={p1} title="Curio" href="https://github.com/ashishguleria04/Curio" />
+          <ProjectCard image={p2} title="Login Page (Tailwind CSS)" href="https://github.com/ashishguleria04/loginpage-tailwindcss" />
+          <ProjectCard image={p3} title="Project Certify" href="https://github.com/ashishguleria04/Project-Certify" />
+          <ProjectCard image={p1} title="Multimodal Vision Language Model" href="https://github.com/ashishguleria04/Multimodal-Vision-Language-Model" />
+          <ProjectCard image={p2} title="Straight Line in Python" href="https://github.com/ashishguleria04/Straight-Line-In-Python" />
+          <ProjectCard image={p3} title="IdeaLab" href="https://github.com/ashishguleria04/IdeaLab" />
+          <ProjectCard image={p1} title="Website Performance Analyzer Extension" href="https://github.com/ashishguleria04/Website-Performance-Analyzer-Extension" />
+          <ProjectCard image={p2} title="HeySpeakers" href="https://github.com/ashishguleria04/heyspeakers" />
+          <ProjectCard image={p3} title="SHEild – Women Safety at Workplaces" href="https://github.com/ashishguleria04/sexual-harassment" />
+          <ProjectCard image={p1} title="Simple Ad Blocker" href="https://github.com/ashishguleria04/simple-ad-blocker" />
+          <ProjectCard image={p2} title="Python QR Code Generator" href="https://github.com/ashishguleria04/python-QR-Code-Generator" />
+          <ProjectCard image={p3} title="Editro Flask Image Editor" href="https://github.com/ashishguleria04/Editro-Flask-Img-Editor" />
+          <ProjectCard image={p1} title="Python Chatbot" href="https://github.com/ashishguleria04/Python-Chatbot" />
+          <ProjectCard image={p2} title="Snake Game" href="https://github.com/ashishguleria04/snake-game" />
+          <ProjectCard image={p3} title="Odin Landing Page" href="https://github.com/ashishguleria04/odin-landing-page" />
         </div>
       </section>
 
@@ -112,9 +117,13 @@ const Index = () => {
           <div className="md:col-span-2">
             <h2 className="text-3xl font-bold tracking-tight font-display">About</h2>
             <p className="mt-4 text-muted-foreground max-w-prose">
-              I build fast, accessible, and expressive interfaces. My process blends a
-              robust design system, semantic HTML, and purposeful motion to create
-              experiences that feel effortless.
+              I’m Ashish Guleria, a passionate Software Engineer and Full Stack Web Developer who thrives on building meaningful and efficient digital experiences. With strong expertise in frontend and backend technologies, I love creating seamless, performant, and visually engaging web solutions.
+            </p>
+            <p className="mt-4 text-muted-foreground max-w-prose">
+              Beyond coding, I’m an explorer of new tech trends, a problem-solver at heart, and a constant learner — whether it’s diving into AI integrations, optimizing website performance, or designing engaging user interfaces. My projects range from creative UI experiments to impactful real-world applications.
+            </p>
+            <p className="mt-4 text-muted-foreground max-w-prose">
+              My mission is simple: to build technology that’s both beautiful and functional, while continuously leveling up my skills and contributing to the tech community.
             </p>
           </div>
             <div>
@@ -160,15 +169,42 @@ const Index = () => {
           </div>
           <div className="sm:col-span-2">
             <Button asChild variant="outline">
-              <a href="/resume.pdf" target="_blank" rel="noopener" className="hover-scale">View resume</a>
+              <a href="https://drive.google.com/file/d/1AfCCeVgSXvhjuefcNG3TWm5yYhpFj8uv/view" target="_blank" rel="noopener" className="hover-scale">View resume</a>
             </Button>
           </div>
         </motion.form>
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <Button asChild variant="outline" size="icon" aria-label="Email">
+            <a href="mailto:guleriaashish85@gmail.com"><Mail className="size-4" /></a>
+          </Button>
+          <Button asChild variant="outline" size="icon" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/ashish-guleria04/" target="_blank" rel="noopener"><Linkedin className="size-4" /></a>
+          </Button>
+          <Button asChild variant="outline" size="icon" aria-label="GitHub">
+            <a href="https://github.com/ashishguleria04" target="_blank" rel="noopener"><Github className="size-4" /></a>
+          </Button>
+          <Button asChild variant="outline" size="icon" aria-label="X (Twitter)">
+            <a href="https://x.com/ashishguleria_" target="_blank" rel="noopener"><Twitter className="size-4" /></a>
+          </Button>
+          <Button asChild variant="outline" size="icon" aria-label="Resume">
+            <a href="https://drive.google.com/file/d/1AfCCeVgSXvhjuefcNG3TWm5yYhpFj8uv/view" target="_blank" rel="noopener"><FileText className="size-4" /></a>
+          </Button>
+          <Button asChild variant="outline" size="icon" aria-label="LeetCode">
+            <a href="https://leetcode.com/u/aashiishh_/" target="_blank" rel="noopener">
+              <img src={leetcodeLogo} alt="LeetCode logo" className="size-4" />
+            </a>
+          </Button>
+          <Button asChild variant="outline" size="icon" aria-label="GeeksforGeeks">
+            <a href="https://www.geeksforgeeks.org/user/ashishguleria04/" target="_blank" rel="noopener">
+              <img src={gfgLogo} alt="GeeksforGeeks logo" className="size-4" />
+            </a>
+          </Button>
+        </div>
       </section>
 
       <footer className="border-t py-8">
         <div className="container mx-auto text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Your Name. All rights reserved.
+          © {new Date().getFullYear()} Ashish Guleria. All rights reserved.
         </div>
       </footer>
     </main>

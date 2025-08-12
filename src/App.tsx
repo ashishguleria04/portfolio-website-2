@@ -8,7 +8,7 @@ import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { Navbar } from "./components/Navbar";
 import Blog from "./pages/Blog";
-import { BackgroundFX } from "./components/BackgroundFX";
+
 
 const queryClient = new QueryClient();
 
@@ -18,7 +18,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-          <BackgroundFX />
+          
           <BrowserRouter>
           <Navbar />
           <Routes>
