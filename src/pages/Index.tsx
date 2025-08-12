@@ -1,33 +1,18 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { SEO } from "@/components/SEO";
-import { ProjectCard } from "@/components/ProjectCard";
-import avatar from "@/assets/avatar.jpg";
-import p1 from "@/assets/project1.jpg";
-import p2 from "@/assets/project2.jpg";
-import p3 from "@/assets/project3.jpg";
 import { toast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
-import { Mail, Linkedin, Github, Twitter, FileText } from "lucide-react";
-import leetcodeLogo from "@/assets/leetcode.svg";
-import gfgLogo from "@/assets/geeksforgeeks.svg";
+import { Mail, BookOpen, Award } from "lucide-react";
+import avatar from "@/assets/avatar.jpg";
+// Add react-icons for better brand icons
+import { FaLinkedin, FaGithub, FaXTwitter } from "react-icons/fa6";
+import { SiLeetcode, SiGeeksforgeeks } from "react-icons/si";
+import { MdEmail } from "react-icons/md";
 
 const Index = () => {
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const name = data.get("name");
-    toast({
-      title: "Message sent",
-      description: `Thanks${name ? `, ${name}` : ""}! I'll get back to you shortly.`,
-    });
-    e.currentTarget.reset();
-  };
-
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-grid-light dark:bg-grid-dark">
       <SEO
         title="Ashish Guleria | Software Engineer & Full Stack Developer"
         description="Portfolio of Ashish Guleria: Software Engineer & Full Stack Web Developer. Projects, about, contact, and blog."
@@ -35,79 +20,340 @@ const Index = () => {
       />
 
       {/* Hero */}
-      <section id="home" className="container mx-auto pt-16 pb-20">
-        <div className="grid items-center gap-8 md:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-sm text-muted-foreground mb-3">Available for freelance</p>
-            <h1 className="text-5xl sm:text-6xl font-extrabold leading-[1.1] tracking-tight font-display">
+      <section
+        id="home"
+        className="container mx-auto pt-16 pb-20 flex flex-col-reverse md:flex-row items-center gap-12"
+      >
+        {/* Left: Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="w-full md:w-1/2"
+        >
+          <span className="inline-block px-3 py-1 mb-4 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-700 dark:text-blue-300 text-xs font-semibold tracking-wide border border-blue-200 dark:border-blue-700 shadow-sm">
+            Open for freelance, internships, and full-time roles
+          </span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight font-display mb-4">
+            Hi, I'm{" "}
+            <span>
               Ashish Guleria
-            </h1>
-            <p className="mt-4 text-lg text-muted-foreground max-w-prose">
-              Software Engineer & Full Stack Web Developer
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild variant="hero" className="hover-scale">
-                <a href="#contact">Contact me</a>
-              </Button>
-              <Button asChild variant="outline">
-                <Link to="/blog">Read the blog</Link>
-              </Button>
-              <Button asChild variant="outline">
-                <a href="https://drive.google.com/file/d/1AfCCeVgSXvhjuefcNG3TWm5yYhpFj8uv/view" target="_blank" rel="noopener">
-                  Download resume
-                </a>
-              </Button>
-            </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="justify-self-center"
-          >
-            <div className="relative size-40 sm:size-48 rounded-full overflow-hidden ring-2 ring-ring shadow-elevated">
-              <span
-                aria-hidden
-                className="pointer-events-none absolute -inset-6 rounded-full opacity-60 blur-2xl"
-                style={{ background: "radial-gradient(closest-side, hsl(var(--brand) / 0.18), transparent 70%)" }}
-              />
-              <img
-                src={avatar}
-                alt="Ashish Guleria portrait"
-                loading="eager"
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </motion.div>
-        </div>
+            </span>
+          </h1>
+          <h2 className="text-xl sm:text-2xl font-semibold text-muted-foreground mb-6">
+            Software Engineer & Full Stack Web Developer
+          </h2>
+          <div className="flex flex-wrap gap-3 mb-8">
+            <Button asChild variant="outline">
+              <Link to="/blog">
+                <BookOpen className="size-4 mr-2" />
+                Read the Blog
+              </Link>
+            </Button>
+            <Button asChild variant="outline">
+              <a
+                href="https://drive.google.com/file/d/1AfCCeVgSXvhjuefcNG3TWm5yYhpFj8uv/view"
+                target="_blank"
+                rel="noopener"
+              >
+                <FileText className="size-4 mr-2" />
+                Download Resume
+              </a>
+            </Button>
+          </div>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-prose mb-8">
+            I’m Ashish Guleria, a Software Engineer and Full Stack Web Developer passionate about building impactful, user-friendly, and visually appealing digital experiences. I love turning ideas into reality through clean code, creative design, and constant learning.
+          </p>
+          {/* Social Icons */}
+          <div className="flex flex-wrap items-center gap-2 mt-2">
+            <Button
+              asChild
+              variant="outline"
+              size="icon"
+              aria-label="Email"
+              className="transition-all hover:scale-110"
+            >
+              <a href="mailto:guleriaashish85@gmail.com">
+                <MdEmail className="size-5 text-white" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="icon"
+              aria-label="LinkedIn"
+              className="transition-all hover:scale-110"
+            >
+              <a
+                href="https://www.linkedin.com/in/ashish-guleria04/"
+                target="_blank"
+                rel="noopener"
+              >
+                <FaLinkedin className="size-5 text-white" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="icon"
+              aria-label="GitHub"
+              className="transition-all hover:scale-110"
+            >
+              <a
+                href="https://github.com/ashishguleria04"
+                target="_blank"
+                rel="noopener"
+              >
+                <FaGithub className="size-5 text-white" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="icon"
+              aria-label="X (Twitter)"
+              className="transition-all hover:scale-110"
+            >
+              <a
+                href="https://x.com/ashishguleria_"
+                target="_blank"
+                rel="noopener"
+              >
+                <FaXTwitter className="size-5 text-white" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="icon"
+              aria-label="LeetCode"
+              className="transition-all hover:scale-110"
+            >
+              <a
+                href="https://leetcode.com/u/aashiishh_/"
+                target="_blank"
+                rel="noopener"
+              >
+                <SiLeetcode className="size-5 text-white" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="icon"
+              aria-label="GeeksforGeeks"
+              className="transition-all hover:scale-110"
+            >
+              <a
+                href="https://www.geeksforgeeks.org/user/ashishguleria04/"
+                target="_blank"
+                rel="noopener"
+              >
+                <SiGeeksforgeeks className="size-5 text-white" />
+              </a>
+            </Button>
+          </div>
+        </motion.div>
+        {/* Right: Avatar */}
+        <motion.div
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="w-full md:w-1/2 flex justify-center items-center"
+        >
+          <div className="relative size-50 sm:size-56 md:size-64 rounded-full overflow-hidden ring-4 ring-blue-400/30 dark:ring-purple-700/40 shadow-elevated">
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -inset-6 rounded-full opacity-60 blur-2xl"
+              style={{
+                background:
+                  "radial-gradient(closest-side, hsl(var(--brand) / 0.18), transparent 70%)",
+              }}
+            />
+            <img
+              src={avatar}
+              alt="Ashish Guleria portrait"
+              loading="eager"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </motion.div>
       </section>
 
       {/* Projects */}
       <section id="projects" className="container mx-auto py-16">
         <header className="mb-8">
-          <h2 className="text-3xl font-bold tracking-tight font-display">Projects</h2>
-          <p className="text-muted-foreground mt-2">Selected work with thoughtful details, gradients, and motion.</p>
+          <h2 className="text-3xl font-bold tracking-tight font-display">
+            Projects
+          </h2>
         </header>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <ProjectCard image={p1} title="Curio" href="https://github.com/ashishguleria04/Curio" />
-          <ProjectCard image={p2} title="Login Page (Tailwind CSS)" href="https://github.com/ashishguleria04/loginpage-tailwindcss" />
-          <ProjectCard image={p3} title="Project Certify" href="https://github.com/ashishguleria04/Project-Certify" />
-          <ProjectCard image={p1} title="Multimodal Vision Language Model" href="https://github.com/ashishguleria04/Multimodal-Vision-Language-Model" />
-          <ProjectCard image={p2} title="Straight Line in Python" href="https://github.com/ashishguleria04/Straight-Line-In-Python" />
-          <ProjectCard image={p3} title="IdeaLab" href="https://github.com/ashishguleria04/IdeaLab" />
-          <ProjectCard image={p1} title="Website Performance Analyzer Extension" href="https://github.com/ashishguleria04/Website-Performance-Analyzer-Extension" />
-          <ProjectCard image={p2} title="HeySpeakers" href="https://github.com/ashishguleria04/heyspeakers" />
-          <ProjectCard image={p3} title="SHEild – Women Safety at Workplaces" href="https://github.com/ashishguleria04/sexual-harassment" />
-          <ProjectCard image={p1} title="Simple Ad Blocker" href="https://github.com/ashishguleria04/simple-ad-blocker" />
-          <ProjectCard image={p2} title="Python QR Code Generator" href="https://github.com/ashishguleria04/python-QR-Code-Generator" />
-          <ProjectCard image={p3} title="Editro Flask Image Editor" href="https://github.com/ashishguleria04/Editro-Flask-Img-Editor" />
-          <ProjectCard image={p1} title="Python Chatbot" href="https://github.com/ashishguleria04/Python-Chatbot" />
-          <ProjectCard image={p2} title="Snake Game" href="https://github.com/ashishguleria04/snake-game" />
-          <ProjectCard image={p3} title="Odin Landing Page" href="https://github.com/ashishguleria04/odin-landing-page" />
+          {/* Example project cards without images */}
+          <a
+            href="https://github.com/ashishguleria04/Curio"
+            target="_blank"
+            rel="noopener"
+            className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+          >
+            <h3 className="font-bold text-lg mb-1">Curio</h3>
+            <p className="text-muted-foreground text-sm">
+              A modern knowledge-sharing platform for curious minds to ask, answer, and discover.
+            </p>
+          </a>
+          <a
+            href="https://github.com/ashishguleria04/loginpage-tailwindcss"
+            target="_blank"
+            rel="noopener"
+            className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+          >
+            <h3 className="font-bold text-lg mb-1">Login Page (Tailwind CSS)</h3>
+            <p className="text-muted-foreground text-sm">
+              A beautiful, responsive login page built with Tailwind CSS and React.
+            </p>
+          </a>
+          <a
+            href="https://github.com/ashishguleria04/Project-Certify"
+            target="_blank"
+            rel="noopener"
+            className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+          >
+            <h3 className="font-bold text-lg mb-1">Project Certify</h3>
+            <p className="text-muted-foreground text-sm">
+              A certificate generator and management tool for events and organizations.
+            </p>
+          </a>
+          <a
+            href="https://github.com/ashishguleria04/Multimodal-Vision-Language-Model"
+            target="_blank"
+            rel="noopener"
+            className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+          >
+            <h3 className="font-bold text-lg mb-1">Multimodal Vision Language Model</h3>
+            <p className="text-muted-foreground text-sm">
+              Combines vision and language models for advanced AI applications.
+            </p>
+          </a>
+          <a
+            href="https://github.com/ashishguleria04/Straight-Line-In-Python"
+            target="_blank"
+            rel="noopener"
+            className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+          >
+            <h3 className="font-bold text-lg mb-1">Straight Line in Python</h3>
+            <p className="text-muted-foreground text-sm">
+              A Python tool to plot and analyze straight lines and their equations.
+            </p>
+          </a>
+          <a
+            href="https://github.com/ashishguleria04/IdeaLab"
+            target="_blank"
+            rel="noopener"
+            className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+          >
+            <h3 className="font-bold text-lg mb-1">IdeaLab</h3>
+            <p className="text-muted-foreground text-sm">
+              A collaborative platform for brainstorming and sharing innovative ideas.
+            </p>
+          </a>
+          <a
+            href="https://github.com/ashishguleria04/Website-Performance-Analyzer-Extension"
+            target="_blank"
+            rel="noopener"
+            className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+          >
+            <h3 className="font-bold text-lg mb-1">Website Performance Analyzer Extension</h3>
+            <p className="text-muted-foreground text-sm">
+              A browser extension to analyze and improve website performance metrics.
+            </p>
+          </a>
+          <a
+            href="https://github.com/ashishguleria04/heyspeakers"
+            target="_blank"
+            rel="noopener"
+            className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+          >
+            <h3 className="font-bold text-lg mb-1">HeySpeakers</h3>
+            <p className="text-muted-foreground text-sm">
+              A web app for organizing and managing speaker sessions and events.
+            </p>
+          </a>
+          <a
+            href="https://github.com/ashishguleria04/sexual-harassment"
+            target="_blank"
+            rel="noopener"
+            className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+          >
+            <h3 className="font-bold text-lg mb-1">SHEild – Women Safety at Workplaces</h3>
+            <p className="text-muted-foreground text-sm">
+              A platform to report and address workplace safety concerns for women.
+            </p>
+          </a>
+          <a
+            href="https://github.com/ashishguleria04/simple-ad-blocker"
+            target="_blank"
+            rel="noopener"
+            className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+          >
+            <h3 className="font-bold text-lg mb-1">Simple Ad Blocker</h3>
+            <p className="text-muted-foreground text-sm">
+              A lightweight browser extension to block intrusive ads.
+            </p>
+          </a>
+          <a
+            href="https://github.com/ashishguleria04/python-QR-Code-Generator"
+            target="_blank"
+            rel="noopener"
+            className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+          >
+            <h3 className="font-bold text-lg mb-1">Python QR Code Generator</h3>
+            <p className="text-muted-foreground text-sm">
+              Generate QR codes easily with this Python-based tool.
+            </p>
+          </a>
+          <a
+            href="https://github.com/ashishguleria04/Editro-Flask-Img-Editor"
+            target="_blank"
+            rel="noopener"
+            className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+          >
+            <h3 className="font-bold text-lg mb-1">Editro Flask Image Editor</h3>
+            <p className="text-muted-foreground text-sm">
+              A simple image editor built with Flask for quick edits and filters.
+            </p>
+          </a>
+          <a
+            href="https://github.com/ashishguleria04/Python-Chatbot"
+            target="_blank"
+            rel="noopener"
+            className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+          >
+            <h3 className="font-bold text-lg mb-1">Python Chatbot</h3>
+            <p className="text-muted-foreground text-sm">
+              An interactive chatbot built in Python for basic conversations.
+            </p>
+          </a>
+          <a
+            href="https://github.com/ashishguleria04/snake-game"
+            target="_blank"
+            rel="noopener"
+            className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+          >
+            <h3 className="font-bold text-lg mb-1">Snake Game</h3>
+            <p className="text-muted-foreground text-sm">
+              Classic snake game recreated in Python with a modern UI.
+            </p>
+          </a>
+          <a
+            href="https://github.com/ashishguleria04/odin-landing-page"
+            target="_blank"
+            rel="noopener"
+            className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+          >
+            <h3 className="font-bold text-lg mb-1">Odin Landing Page</h3>
+            <p className="text-muted-foreground text-sm">
+              A clean and responsive landing page project for The Odin Project curriculum.
+            </p>
+          </a>
         </div>
       </section>
 
@@ -117,24 +363,30 @@ const Index = () => {
           <div className="md:col-span-2">
             <h2 className="text-3xl font-bold tracking-tight font-display">About</h2>
             <p className="mt-4 text-muted-foreground max-w-prose">
-              I’m Ashish Guleria, a passionate Software Engineer and Full Stack Web Developer who thrives on building meaningful and efficient digital experiences. With strong expertise in frontend and backend technologies, I love creating seamless, performant, and visually engaging web solutions.
+              I’m Ashish Guleria, a dedicated Software Engineer and Full Stack Web Developer with a passion for building impactful, user-centric digital solutions. My journey spans a diverse range of projects—from browser extensions that analyze and improve website performance, to collaborative platforms like Curio and IdeaLab, to creative tools such as image editors and certificate generators.
             </p>
             <p className="mt-4 text-muted-foreground max-w-prose">
-              Beyond coding, I’m an explorer of new tech trends, a problem-solver at heart, and a constant learner — whether it’s diving into AI integrations, optimizing website performance, or designing engaging user interfaces. My projects range from creative UI experiments to impactful real-world applications.
+              I thrive on solving real-world problems through clean code, thoughtful design, and a constant drive to learn and innovate. Whether it’s developing robust backend systems, crafting beautiful and responsive UIs, or optimizing applications for speed and accessibility, I enjoy every step of the software development process.
             </p>
             <p className="mt-4 text-muted-foreground max-w-prose">
-              My mission is simple: to build technology that’s both beautiful and functional, while continuously leveling up my skills and contributing to the tech community.
+              My work reflects a blend of technical expertise and creativity—delivering solutions like ad blockers, chatbots, and safety platforms that make a difference. I’m always eager to take on new challenges, collaborate with others, and contribute to projects that push the boundaries of what’s possible on the web.
             </p>
           </div>
-            <div>
-              <div className="rounded-lg border bg-card/60 backdrop-blur p-4 shadow-elevated supports-[backdrop-filter]:bg-card/50">
-                <ul className="space-y-2 text-sm">
-                  <li><span className="text-muted-foreground">Focus:</span> UI Engineering, Motion, Design Systems</li>
-                  <li><span className="text-muted-foreground">Stack:</span> React, TypeScript, Tailwind, Framer Motion</li>
-                  <li><span className="text-muted-foreground">Location:</span> Remote</li>
-                </ul>
-              </div>
+          <div>
+            <div className="rounded-lg border bg-card/60 backdrop-blur p-4 shadow-elevated supports-[backdrop-filter]:bg-card/50">
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <span className="text-muted-foreground">Focus:</span> Software Development, Full Stack Website Development, Problem Solving, UI/UX Engineering, Web Performance, Collaboration Tools
+                </li>
+                <li>
+                  <span className="text-muted-foreground">Stack:</span> React, TypeScript, Tailwind CSS, Framer Motion, Python, Flask
+                </li>
+                <li>
+                  <span className="text-muted-foreground">Location:</span> Remote
+                </li>
+              </ul>
             </div>
+          </div>
         </div>
       </section>
 
@@ -144,61 +396,16 @@ const Index = () => {
           <h2 className="text-3xl font-bold tracking-tight font-display">Contact</h2>
           <p className="text-muted-foreground mt-2">Let’s build something exceptional together.</p>
         </header>
-        <motion.form
-          onSubmit={onSubmit}
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5 }}
-          className="grid gap-4 sm:grid-cols-2"
-        >
-          <div className="sm:col-span-1">
-            <label htmlFor="name" className="mb-2 block text-sm">Name</label>
-            <Input id="name" name="name" placeholder="Jane Doe" required />
-          </div>
-          <div className="sm:col-span-1">
-            <label htmlFor="email" className="mb-2 block text-sm">Email</label>
-            <Input id="email" name="email" type="email" placeholder="jane@email.com" required />
-          </div>
-          <div className="sm:col-span-2">
-            <label htmlFor="message" className="mb-2 block text-sm">Message</label>
-            <Textarea id="message" name="message" placeholder="Tell me about your project" rows={6} required />
-          </div>
-          <div>
-            <Button type="submit" variant="hero" className="hover-scale">Send message</Button>
-          </div>
-          <div className="sm:col-span-2">
-            <Button asChild variant="outline">
-              <a href="https://drive.google.com/file/d/1AfCCeVgSXvhjuefcNG3TWm5yYhpFj8uv/view" target="_blank" rel="noopener" className="hover-scale">View resume</a>
-            </Button>
-          </div>
-        </motion.form>
-        <div className="mt-6 flex flex-wrap items-center gap-3">
-          <Button asChild variant="outline" size="icon" aria-label="Email">
-            <a href="mailto:guleriaashish85@gmail.com"><Mail className="size-4" /></a>
-          </Button>
-          <Button asChild variant="outline" size="icon" aria-label="LinkedIn">
-            <a href="https://www.linkedin.com/in/ashish-guleria04/" target="_blank" rel="noopener"><Linkedin className="size-4" /></a>
-          </Button>
-          <Button asChild variant="outline" size="icon" aria-label="GitHub">
-            <a href="https://github.com/ashishguleria04" target="_blank" rel="noopener"><Github className="size-4" /></a>
-          </Button>
-          <Button asChild variant="outline" size="icon" aria-label="X (Twitter)">
-            <a href="https://x.com/ashishguleria_" target="_blank" rel="noopener"><Twitter className="size-4" /></a>
-          </Button>
-          <Button asChild variant="outline" size="icon" aria-label="Resume">
-            <a href="https://drive.google.com/file/d/1AfCCeVgSXvhjuefcNG3TWm5yYhpFj8uv/view" target="_blank" rel="noopener"><FileText className="size-4" /></a>
-          </Button>
-          <Button asChild variant="outline" size="icon" aria-label="LeetCode">
-            <a href="https://leetcode.com/u/aashiishh_/" target="_blank" rel="noopener">
-              <img src={leetcodeLogo} alt="LeetCode logo" className="size-4" />
-            </a>
-          </Button>
-          <Button asChild variant="outline" size="icon" aria-label="GeeksforGeeks">
-            <a href="https://www.geeksforgeeks.org/user/ashishguleria04/" target="_blank" rel="noopener">
-              <img src={gfgLogo} alt="GeeksforGeeks logo" className="size-4" />
-            </a>
-          </Button>
+        {/* Contact form removed */}
+        <div className="text-lg text-muted-foreground">
+          You can reach me directly at{" "}
+          <a
+            href="mailto:guleriaashish85@gmail.com"
+            className="underline hover:text-primary transition-colors"
+          >
+            guleriaashish85@gmail.com
+          </a>
+          {" "}or via any of the social links above.
         </div>
       </section>
 

@@ -9,7 +9,8 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 0%;
+    /* --foreground: 222.2 84% 2%; was 4.9% */
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -166,6 +167,24 @@ All colors MUST be HSL.
 
   /* Particles */
   .particle { position: fixed; width: 3px; height: 3px; border-radius: 9999px; background: hsl(var(--ring) / 0.18); filter: blur(.5px); animation: floaty 12s ease-in-out infinite alternate; }
+
+  .bg-grid-light {
+    background-color: hsl(var(--background));
+    background-image:
+      linear-gradient(to right, rgba(0,0,0,0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,0.07) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position: 0 0;
+  }
+
+  .bg-grid-dark {
+    background-color: hsl(var(--background));
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position: 0 0;
+  }
 
   @keyframes drift {
     0% { transform: translate3d(0,0,0) scale(1); }

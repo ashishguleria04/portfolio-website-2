@@ -46,7 +46,7 @@ export const Navbar = () => {
       <nav className="container mx-auto flex h-16 items-center justify-between">
         <Link to="/" className="font-extrabold tracking-tight text-lg">
           <span className="sr-only">Home</span>
-          <span aria-hidden>Portfolio</span>
+          <span aria-hidden>Ashish  Guleria</span>
         </Link>
         <div className="hidden md:flex items-center gap-6">
           {sections.map((s) => (
