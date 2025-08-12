@@ -5,15 +5,13 @@ interface SEOProps {
   description?: string;
   canonical?: string;
   type?: string;
-  image?: string;
 }
 
 export const SEO = ({
   title,
-  description = "Modern, responsive portfolio with projects, blog, and contact.",
+  description = "Ashish Guleria's modern, responsive portfolio with projects, blog, and contact.",
   canonical,
   type = "website",
-  image = "https://lovable.dev/opengraph-image-p98pqg.png",
 }: SEOProps) => {
   useEffect(() => {
     document.title = title;
@@ -32,12 +30,7 @@ export const SEO = ({
     };
 
     setMeta("description", description);
-    setMeta("og:title", title, true);
-    setMeta("og:description", description, true);
-    setMeta("og:type", type, true);
-    setMeta("og:image", image, true);
     setMeta("twitter:card", "summary_large_image");
-    setMeta("twitter:image", image);
 
     const url = canonical || window.location.href;
     let link = document.querySelector<HTMLLinkElement>("link[rel='canonical']");
@@ -47,7 +40,7 @@ export const SEO = ({
       document.head.appendChild(link);
     }
     link.setAttribute("href", url);
-  }, [title, description, canonical, type, image]);
+  }, [title, description, canonical, type]);
 
   return null;
 };
