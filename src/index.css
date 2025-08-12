@@ -39,20 +39,27 @@ All colors MUST be HSL.
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Brand & gradients */
+    --brand: 217 91% 60%;
+    --brand-2: 224 76% 48%;
+    --accent-start: 260 84% 63%;
+    --accent-end: 294 70% 54%;
+    --gradient-primary: linear-gradient(135deg, hsl(var(--brand)) 0%, hsl(var(--brand-2)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent-start)) 0%, hsl(var(--accent-end)) 100%);
+
+    /* Canvas gradient for dark theme will be set in .dark */
+    --shadow-elevated: 0 12px 30px -12px hsl(var(--brand) / 0.35);
+    --shadow-glow: 0 0 40px hsl(var(--brand-2) / 0.35);
+
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
@@ -91,6 +98,9 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Canvas gradient for dark mode: black → deep blue */
+    --gradient-canvas-dark: radial-gradient(1200px circle at 20% -10%, hsl(220 15% 5%) 0%, hsl(220 40% 8%) 35%, hsl(220 60% 10%) 60%, hsl(220 70% 12%) 100%);
   }
 }
 
@@ -99,7 +109,43 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html { scroll-behavior: smooth; }
+
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "cv02","cv03","cv04","cv11";
+    transition: var(--transition-smooth);
+    background-image: none;
   }
+
+  .dark body {
+    background-image: var(--gradient-canvas-dark);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-primary { background-image: var(--gradient-primary); }
+  .bg-gradient-accent { background-image: var(--gradient-accent); }
+  .shadow-elevated { box-shadow: var(--shadow-elevated); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+
+  .story-link { position: relative; display: inline-block; }
+  .story-link::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -2px; height: 2px; width: 100%;
+    background: hsl(var(--ring));
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform .3s ease;
+  }
+  .story-link:hover::after, .story-link[aria-current="page"]::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .hover-scale { transition: transform .2s ease; }
+  .hover-scale:hover { transform: scale(1.04); }
 }
