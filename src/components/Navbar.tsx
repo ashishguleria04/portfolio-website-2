@@ -42,7 +42,7 @@ export const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-card/80 backdrop-blur supports-[backdrop-filter]:bg-card/60">
+    <header className="sticky top-0 z-50 glass border-b animate-fade-in">
       <nav className="container mx-auto flex h-16 items-center justify-between">
         <Link to="/" className="font-extrabold tracking-tight text-lg">
           <span className="sr-only">Home</span>

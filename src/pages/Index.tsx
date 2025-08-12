@@ -40,12 +40,11 @@ const Index = () => {
             transition={{ duration: 0.6 }}
           >
             <p className="text-sm text-muted-foreground mb-3">Available for freelance</p>
-            <h1 className="text-5xl sm:text-6xl font-extrabold leading-[1.1] tracking-tight">
+            <h1 className="text-5xl sm:text-6xl font-extrabold leading-[1.1] tracking-tight font-display">
               Your Name
             </h1>
             <p className="mt-4 text-lg text-muted-foreground max-w-prose">
-              Frontend developer crafting accessible interfaces with motion, clarity,
-              and performance.
+              Frontend engineer crafting elegant, performant interfaces with motion and clarity.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild variant="hero" className="hover-scale">
@@ -82,8 +81,8 @@ const Index = () => {
       {/* Projects */}
       <section id="projects" className="container mx-auto py-16">
         <header className="mb-8">
-          <h2 className="text-3xl font-bold tracking-tight">Projects</h2>
-          <p className="text-muted-foreground mt-2">Selected work with thoughtful details and motion.</p>
+          <h2 className="text-3xl font-bold tracking-tight font-display">Projects</h2>
+          <p className="text-muted-foreground mt-2">Selected work with thoughtful details, gradients, and motion.</p>
         </header>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <ProjectCard
@@ -111,30 +110,30 @@ const Index = () => {
       <section id="about" className="container mx-auto py-16">
         <div className="grid gap-8 md:grid-cols-3">
           <div className="md:col-span-2">
-            <h2 className="text-3xl font-bold tracking-tight">About</h2>
+            <h2 className="text-3xl font-bold tracking-tight font-display">About</h2>
             <p className="mt-4 text-muted-foreground max-w-prose">
-              I build fast, accessible, and animated interfaces. My approach blends a
-              strong design system, semantic HTML, and purposeful motion for clear
-              user journeys.
+              I build fast, accessible, and expressive interfaces. My process blends a
+              robust design system, semantic HTML, and purposeful motion to create
+              experiences that feel effortless.
             </p>
           </div>
-          <div>
-            <div className="rounded-lg border bg-card p-4 shadow-elevated">
-              <ul className="space-y-2 text-sm">
-                <li><span className="text-muted-foreground">Focus:</span> UI Engineering, Motion, Design Systems</li>
-                <li><span className="text-muted-foreground">Stack:</span> React, TypeScript, Tailwind, Framer Motion</li>
-                <li><span className="text-muted-foreground">Location:</span> Remote</li>
-              </ul>
+            <div>
+              <div className="rounded-lg border bg-card/60 backdrop-blur p-4 shadow-elevated supports-[backdrop-filter]:bg-card/50">
+                <ul className="space-y-2 text-sm">
+                  <li><span className="text-muted-foreground">Focus:</span> UI Engineering, Motion, Design Systems</li>
+                  <li><span className="text-muted-foreground">Stack:</span> React, TypeScript, Tailwind, Framer Motion</li>
+                  <li><span className="text-muted-foreground">Location:</span> Remote</li>
+                </ul>
+              </div>
             </div>
-          </div>
         </div>
       </section>
 
       {/* Contact */}
       <section id="contact" className="container mx-auto py-16">
         <header className="mb-8">
-          <h2 className="text-3xl font-bold tracking-tight">Contact</h2>
-          <p className="text-muted-foreground mt-2">Let’s build something wonderful together.</p>
+          <h2 className="text-3xl font-bold tracking-tight font-display">Contact</h2>
+          <p className="text-muted-foreground mt-2">Let’s build something exceptional together.</p>
         </header>
         <motion.form
           onSubmit={onSubmit}

@@ -42,7 +42,7 @@ const Blog = () => {
       />
       <section className="container mx-auto py-16">
         <header className="mb-10">
-          <h1 className="text-4xl font-extrabold tracking-tight">Blog</h1>
+          <h1 className="text-4xl font-extrabold tracking-tight font-display">Blog</h1>
           <p className="mt-2 text-muted-foreground">Notes on design systems, motion, and modern frontend.</p>
         </header>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -54,7 +54,7 @@ const Blog = () => {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.4, delay: idx * 0.05 }}
             >
-              <Card className="overflow-hidden border-0 shadow-elevated hover:shadow-glow transition-shadow">
+              <Card className="overflow-hidden border-0 bg-card/70 backdrop-blur supports-[backdrop-filter]:bg-card/60 shadow-elevated hover:shadow-glow transition-shadow">
                 <img
                   src={p.image}
                   alt={`${p.title} cover image`}
@@ -63,7 +63,7 @@ const Blog = () => {
                 />
                 <CardContent className="py-5">
                   <time className="text-xs text-muted-foreground">{new Date(p.date).toLocaleDateString()}</time>
-                  <h2 className="mt-2 text-lg font-semibold leading-tight">{p.title}</h2>
+                  <h2 className="mt-2 text-lg font-semibold leading-tight font-display">{p.title}</h2>
                   <p className="mt-2 text-sm text-muted-foreground">{p.excerpt}</p>
                 </CardContent>
               </Card>

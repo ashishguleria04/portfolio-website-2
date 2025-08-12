@@ -12,24 +12,28 @@ interface ProjectCardProps {
 export const ProjectCard = ({ image, title, description, tags }: ProjectCardProps) => {
   return (
     <motion.div
-      whileHover={{ y: -4 }}
+      whileHover={{ y: -4, rotateX: 1, rotateY: -2 }}
       whileTap={{ scale: 0.98 }}
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="h-full"
+      className="h-full group [transform-style:preserve-3d]"
+      style={{ perspective: 1000 }}
     >
-      <Card className="overflow-hidden h-full border-0 shadow-elevated hover:shadow-glow transition-shadow">
+      <Card className="relative overflow-hidden h-full border-0 bg-card/70 backdrop-blur supports-[backdrop-filter]:bg-card/60 shadow-elevated hover:shadow-glow transition-[box-shadow,transform] will-change-transform">
         <div className="aspect-[3/2] overflow-hidden">
           <img
             src={image}
             alt={`${title} project preview`}
             loading="lazy"
-            className="h-full w-full object-cover"/>
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+        </div>
+        <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="absolute inset-0 bg-gradient-accent opacity-10 mix-blend-overlay" />
         </div>
         <CardContent className="space-y-3 py-5">
-          <h3 className="text-lg font-semibold leading-tight">{title}</h3>
+          <h3 className="text-lg font-semibold leading-tight font-display">{title}</h3>
           <p className="text-sm text-muted-foreground">{description}</p>
           <div className="flex flex-wrap gap-2 pt-2">
             {tags.map((t) => (
