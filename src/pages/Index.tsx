@@ -12,32 +12,32 @@ const SOCIALS = [
 	{
 		href: "mailto:guleriaashish85@gmail.com",
 		label: "Email",
-		icon: <Mail className="size-5 text-white" />,
+		icon: <Mail className="size-5 text-black dark:text-white" />,
 	},
 	{
 		href: "https://www.linkedin.com/in/ashish-guleria04/",
 		label: "LinkedIn",
-		icon: <Linkedin className="size-5 text-white" />,
+		icon: <Linkedin className="size-5 text-black dark:text-white" />,
 	},
 	{
 		href: "https://github.com/ashishguleria04",
 		label: "GitHub",
-		icon: <Github className="size-5 text-white" />,
+		icon: <Github className="size-5 text-black dark:text-white" />,
 	},
 	{
 		href: "https://x.com/ashishguleria_",
 		label: "X (Twitter)",
-		icon: <FaXTwitter className="size-5 text-white" />,
+		icon: <FaXTwitter className="size-5 text-black dark:text-white" />,
 	},
 	{
 		href: "https://leetcode.com/u/aashiishh_/",
 		label: "LeetCode",
-		icon: <SiLeetcode className="size-5 text-white" />,
+		icon: <SiLeetcode className="size-5 text-black dark:text-white" />,
 	},
 	{
 		href: "https://www.geeksforgeeks.org/user/ashishguleria04/",
 		label: "GeeksforGeeks",
-		icon: <SiGeeksforgeeks className="size-5 text-white" />,
+		icon: <SiGeeksforgeeks className="size-5 text-black dark:text-white" />,
 	},
 ];
 
