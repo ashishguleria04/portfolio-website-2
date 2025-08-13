@@ -41,24 +41,13 @@ const SOCIALS = [
 	},
 ];
 
-const PROJECTS = [
+// Categorize projects
+const ADVANCED_PROJECTS = [
 	{
 		name: "Curio",
 		desc: "A modern knowledge-sharing platform for curious minds to ask, answer, and discover.",
 		url: "https://github.com/ashishguleria04/Curio",
 		tags: ["React", "Node.js"],
-	},
-	{
-		name: "Login Page (Tailwind CSS)",
-		desc: "A beautiful, responsive login page built with Tailwind CSS and React.",
-		url: "https://github.com/ashishguleria04/loginpage-tailwindcss",
-		tags: ["React", "Tailwind"],
-	},
-	{
-		name: "Project Certify",
-		desc: "A certificate generator and management tool for events and organizations.",
-		url: "https://github.com/ashishguleria04/Project-Certify",
-		tags: ["Python", "Flask"],
 	},
 	{
 		name: "Multimodal Vision Language Model",
@@ -67,16 +56,31 @@ const PROJECTS = [
 		tags: ["Python", "AI"],
 	},
 	{
-		name: "Straight Line in Python",
-		desc: "A Python tool to plot and analyze straight lines and their equations.",
-		url: "https://github.com/ashishguleria04/Straight-Line-In-Python",
-		tags: ["Python"],
+		name: "Project Certify",
+		desc: "A certificate generator and management tool for events and organizations.",
+		url: "https://github.com/ashishguleria04/Project-Certify",
+		tags: ["Python", "Flask"],
 	},
 	{
 		name: "IdeaLab",
 		desc: "A collaborative platform for brainstorming and sharing innovative ideas.",
 		url: "https://github.com/ashishguleria04/IdeaLab",
 		tags: ["React", "Node.js"],
+	},
+	{
+		name: "SHEild – Women Safety at Workplaces",
+		desc: "A platform to report and address workplace safety concerns for women.",
+		url: "https://github.com/ashishguleria04/sexual-harassment",
+		tags: ["React", "Node.js"],
+	},
+];
+
+const INTERMEDIATE_PROJECTS = [
+	{
+		name: "Login Page (Tailwind CSS)",
+		desc: "A beautiful, responsive login page built with Tailwind CSS and React.",
+		url: "https://github.com/ashishguleria04/loginpage-tailwindcss",
+		tags: ["React", "Tailwind"],
 	},
 	{
 		name: "Website Performance Analyzer Extension",
@@ -91,10 +95,10 @@ const PROJECTS = [
 		tags: ["React"],
 	},
 	{
-		name: "SHEild – Women Safety at Workplaces",
-		desc: "A platform to report and address workplace safety concerns for women.",
-		url: "https://github.com/ashishguleria04/sexual-harassment",
-		tags: ["React", "Node.js"],
+		name: "Editro Flask Image Editor",
+		desc: "A simple image editor built with Flask for quick edits and filters.",
+		url: "https://github.com/ashishguleria04/Editro-Flask-Img-Editor",
+		tags: ["Python", "Flask"],
 	},
 	{
 		name: "Simple Ad Blocker",
@@ -102,17 +106,20 @@ const PROJECTS = [
 		url: "https://github.com/ashishguleria04/simple-ad-blocker",
 		tags: ["JavaScript", "Extension"],
 	},
+];
+
+const BASIC_PROJECTS = [
+	{
+		name: "Straight Line in Python",
+		desc: "A Python tool to plot and analyze straight lines and their equations.",
+		url: "https://github.com/ashishguleria04/Straight-Line-In-Python",
+		tags: ["Python"],
+	},
 	{
 		name: "Python QR Code Generator",
 		desc: "Generate QR codes easily with this Python-based tool.",
 		url: "https://github.com/ashishguleria04/python-QR-Code-Generator",
 		tags: ["Python"],
-	},
-	{
-		name: "Editro Flask Image Editor",
-		desc: "A simple image editor built with Flask for quick edits and filters.",
-		url: "https://github.com/ashishguleria04/Editro-Flask-Img-Editor",
-		tags: ["Python", "Flask"],
 	},
 	{
 		name: "Python Chatbot",
@@ -172,12 +179,12 @@ const Index = () => {
 					<span className="inline-block px-3 py-1 mb-4 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-700 dark:text-blue-300 text-xs font-semibold tracking-wide border border-blue-200 dark:border-blue-700 shadow-sm">
 						Open for freelance, internships, and full-time roles
 					</span>
-					<h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight font-display mb-2">
-						Hi, I'm{" "}
-						<span>
-							Ashish Guleria
-						</span>
-					</h1>
+					<h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight font-display mb-2 whitespace-nowrap">
+                        Hi, I'm{" "}
+                        <span>
+                            Ashish Guleria
+                        </span>
+                    </h1>
 					<motion.p
 						initial={{ opacity: 0, y: 10 }}
 						animate={{ opacity: 1, y: 0 }}
@@ -236,20 +243,12 @@ const Index = () => {
 					transition={{ duration: 0.6, delay: 0.1 }}
 					className="w-full md:w-1/2 flex justify-center items-center"
 				>
-					<div className="relative size-50 sm:size-56 md:size-64 rounded-full overflow-hidden ring-4 ring-blue-400/30 dark:ring-purple-700/40 shadow-elevated">
-						<span
-							aria-hidden
-							className="pointer-events-none absolute -inset-6 rounded-full opacity-60 blur-2xl"
-							style={{
-								background:
-									"radial-gradient(closest-side, hsl(var(--brand) / 0.18), transparent 70%)",
-							}}
-						/>
+					<div className="relative size-40 sm:size-56 md:size-64 rounded-full overflow-hidden">
 						<img
 							src={avatar}
 							alt="Portrait of Ashish Guleria"
 							loading="eager"
-							className="h-full w-full object-cover border-2 border-white/60 shadow-lg"
+							className="h-full w-full object-cover rounded-full"
 						/>
 					</div>
 				</motion.div>
@@ -262,40 +261,122 @@ const Index = () => {
 						Projects
 					</h2>
 				</header>
-				<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-					{PROJECTS.map((proj) => (
-						<div
-							key={proj.name}
-							className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
-						>
-							<div className="flex items-center justify-between mb-1">
-								<h3 className="font-bold text-lg">{proj.name}</h3>
-								<a
-									href={proj.url}
-									target="_blank"
-									rel="noopener"
-									aria-label={`View ${proj.name} on GitHub`}
-									title="View on GitHub"
-									className="ml-2 text-primary hover:underline"
-								>
-									<Github className="size-4 inline text-primary" />
-								</a>
-							</div>
-							<p className="text-muted-foreground text-sm mb-2">
-								{proj.desc}
-							</p>
-							<div className="flex flex-wrap gap-1">
-								{proj.tags.map((tag) => (
-									<span
-										key={tag}
-										className="inline-block bg-primary/10 text-primary text-xs px-2 py-0.5 rounded font-medium"
+				{/* Advanced */}
+				<div className="mb-10">
+					<h3 className="text-xl font-semibold mb-4">Advanced Projects</h3>
+					<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+						{ADVANCED_PROJECTS.map((proj) => (
+							<div
+								key={proj.name}
+								className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+							>
+								<div className="flex items-center justify-between mb-1">
+									<h3 className="font-bold text-lg">{proj.name}</h3>
+									<a
+										href={proj.url}
+										target="_blank"
+										rel="noopener"
+										aria-label={`View ${proj.name} on GitHub`}
+										title="View on GitHub"
+										className="ml-2 text-primary hover:underline"
 									>
-										{tag}
-									</span>
-								))}
+										<Github className="size-4 inline text-primary" />
+									</a>
+								</div>
+								<p className="text-muted-foreground text-sm mb-2">
+									{proj.desc}
+								</p>
+								<div className="flex flex-wrap gap-1">
+									{proj.tags.map((tag) => (
+										<span
+											key={tag}
+											className="inline-block bg-primary/10 text-primary text-xs px-2 py-0.5 rounded font-medium"
+										>
+											{tag}
+										</span>
+									))}
+								</div>
 							</div>
-						</div>
-					))}
+						))}
+					</div>
+				</div>
+				{/* Intermediate */}
+				<div className="mb-10">
+					<h3 className="text-xl font-semibold mb-4">Intermediate Projects</h3>
+					<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+						{INTERMEDIATE_PROJECTS.map((proj) => (
+							<div
+								key={proj.name}
+								className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+							>
+								<div className="flex items-center justify-between mb-1">
+									<h3 className="font-bold text-lg">{proj.name}</h3>
+									<a
+										href={proj.url}
+										target="_blank"
+										rel="noopener"
+										aria-label={`View ${proj.name} on GitHub`}
+										title="View on GitHub"
+										className="ml-2 text-primary hover:underline"
+									>
+										<Github className="size-4 inline text-primary" />
+									</a>
+								</div>
+								<p className="text-muted-foreground text-sm mb-2">
+									{proj.desc}
+								</p>
+								<div className="flex flex-wrap gap-1">
+									{proj.tags.map((tag) => (
+										<span
+											key={tag}
+											className="inline-block bg-primary/10 text-primary text-xs px-2 py-0.5 rounded font-medium"
+										>
+											{tag}
+										</span>
+									))}
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+				{/* Basic */}
+				<div>
+					<h3 className="text-xl font-semibold mb-4">Basic Projects</h3>
+					<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+						{BASIC_PROJECTS.map((proj) => (
+							<div
+								key={proj.name}
+								className="block rounded-lg border bg-card/60 p-5 shadow-elevated hover:shadow-lg transition"
+							>
+								<div className="flex items-center justify-between mb-1">
+									<h3 className="font-bold text-lg">{proj.name}</h3>
+									<a
+										href={proj.url}
+										target="_blank"
+										rel="noopener"
+										aria-label={`View ${proj.name} on GitHub`}
+										title="View on GitHub"
+										className="ml-2 text-primary hover:underline"
+									>
+										<Github className="size-4 inline text-primary" />
+									</a>
+								</div>
+								<p className="text-muted-foreground text-sm mb-2">
+									{proj.desc}
+								</p>
+								<div className="flex flex-wrap gap-1">
+									{proj.tags.map((tag) => (
+										<span
+											key={tag}
+											className="inline-block bg-primary/10 text-primary text-xs px-2 py-0.5 rounded font-medium"
+										>
+											{tag}
+										</span>
+									))}
+								</div>
+							</div>
+						))}
+					</div>
 				</div>
 			</section>
 
