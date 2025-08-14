@@ -179,7 +179,7 @@ const Index = () => {
 					<span className="inline-block px-3 py-1 mb-4 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-700 dark:text-blue-300 text-xs font-semibold tracking-wide border border-blue-200 dark:border-blue-700 shadow-sm">
 						Open for freelance, internships, and full-time roles
 					</span>
-					<h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight font-display mb-2 whitespace-nowrap">
+					<h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight font-display mb-2 break-words whitespace-normal">
                         Hi, I'm{" "}
                         <span>
                             Ashish Guleria
