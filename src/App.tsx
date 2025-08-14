@@ -9,6 +9,7 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import { Navbar } from "./components/Navbar";
 import Blog from "./pages/Blog";
 import { inject } from "@vercel/analytics"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 const queryClient = new QueryClient();
