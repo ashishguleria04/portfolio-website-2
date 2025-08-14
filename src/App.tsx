@@ -8,7 +8,7 @@ import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { Navbar } from "./components/Navbar";
 import Blog from "./pages/Blog";
-import { Analytics } from "@vercel/analytics/react"
+import { inject } from "@vercel/analytics"
 
 
 const queryClient = new QueryClient();
