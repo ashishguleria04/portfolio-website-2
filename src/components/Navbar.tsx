@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { FaLinkedin, FaGithub, FaXTwitter } from "react-icons/fa6";
@@ -13,6 +13,7 @@ const sections = [
 export const Navbar = () => {
 	const [active, setActive] = useState<string>("home");
 	const location = useLocation();
+	const navigate = useNavigate(); // added
 
 	useEffect(() => {
 		if (location.pathname !== "/") return;
@@ -35,8 +36,20 @@ export const Navbar = () => {
 	}, [location.pathname]);
 
 	const onNavClick = (id: string) => (e: React.MouseEvent) => {
-		if (location.pathname !== "/") return;
 		e.preventDefault();
+
+		// If we are not on the homepage, navigate there first then scroll
+		if (location.pathname !== "/") {
+			navigate("/", { replace: false });
+			// small delay to allow route change + DOM paint, adjust if necessary
+			setTimeout(() => {
+				const el = document.getElementById(id);
+				el?.scrollIntoView({ behavior: "smooth", block: "start" });
+			}, 80);
+			return;
+		}
+
+		// If already on homepage, just scroll to section
 		const el = document.getElementById(id);
 		el?.scrollIntoView({ behavior: "smooth", block: "start" });
 	};
@@ -60,33 +73,31 @@ export const Navbar = () => {
 						Ashish Guleria
 					</span>
 				</Link>
+
 				<div className="hidden md:flex items-center gap-8">
 					{sections.map((s) => (
 						<a
 							key={s.id}
-							href={`#${s.id}`}
-							onClick={onNavClick(s.id)}
+							href={`#${s.id}`}                // fixed href
+							onClick={onNavClick(s.id)}      // improved handler
 							className={`text-base md:text-lg font-semibold px-2 py-1 rounded transition-all duration-200 relative
-                ${
-					active === s.id
-						? "text-primary underline underline-offset-4"
-						: "text-muted-foreground hover:text-primary"
-				}
-                before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-primary before:transition-all before:duration-300 hover:before:w-full
-              `}
+                                ${active === s.id ? "text-primary underline underline-offset-4" : "text-muted-foreground hover:text-primary"}
+                                before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-primary before:transition-all before:duration-300 hover:before:w-full`}
 							aria-current={active === s.id ? "page" : undefined}
 						>
 							{s.label}
 						</a>
 					))}
+
 					<Link
-						to="/blog"
+						to="/blog"                        // use react-router Link for blog navigation
 						className="text-base md:text-lg font-semibold px-2 py-1 rounded text-muted-foreground hover:text-primary transition-all duration-200 relative
-              before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-primary before:transition-all before:duration-300 hover:before:w-full"
+                              before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-primary before:transition-all before:duration-300 hover:before:w-full"
 					>
 						Blog
 					</Link>
 				</div>
+
 				<div className="flex items-center gap-3">
 					{/* Social icons */}
 					<a
