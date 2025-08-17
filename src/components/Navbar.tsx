@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaLinkedin, FaGithub, FaTwitter, FaBars } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaBars, FaXTwitter } from "react-icons/fa6";
 import { ThemeToggle } from "./ThemeToggle";
 
 const sections = [
@@ -148,10 +148,10 @@ export const Navbar = () => {
 						target="_blank"
 						rel="noopener noreferrer"
 						className="p-2 rounded-full hover:bg-primary/15 transition-transform duration-200 transform hover:scale-105"
-						aria-label="X (Twitter)"
-						title="X (Twitter)"
+						aria-label="X"
+						title="X"
 					>
-						<FaTwitter className="size-5 text-black dark:text-white" />
+						<FaXTwitter className="size-5 text-black dark:text-white" />
 					</a>
 
 					<ThemeToggle />
