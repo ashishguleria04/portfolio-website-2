@@ -3,23 +3,15 @@ import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 
 interface ProjectCardProps {
-  image: string;
   title: string;
   description?: string;
   tags?: string[];
   href?: string;
 }
 
-export const ProjectCard = ({ image, title, description, tags = [], href }: ProjectCardProps) => {
+export const ProjectCard = ({ title, description, tags = [], href }: ProjectCardProps) => {
   const card = (
     <Card className="relative overflow-hidden h-full border-0 bg-card/70 backdrop-blur supports-[backdrop-filter]:bg-card/60 shadow-elevated hover:shadow-glow transition-[box-shadow,transform] will-change-transform">
-      <div className="aspect-[3/2] overflow-hidden">
-        <img
-          src={image}
-          alt={`${title} project preview`}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
-      </div>
       <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
         <div className="absolute inset-0 bg-gradient-accent opacity-10 mix-blend-overlay" />
       </div>
