@@ -218,58 +218,55 @@ const Index = () => {
 			{/* Hero */}
 			<section
 				id="home"
-				className="container mx-auto pt-16 pb-20 flex flex-col-reverse md:flex-row items-center gap-12"
+				className="container mx-auto pt-24 pb-20 text-center"
 			>
-				{/* Left: Content */}
 				<motion.div
-					initial={{ opacity: 0, y: 16 }}
+					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.6 }}
-					className="w-full md:w-1/2"
+					transition={{ duration: 0.8, ease: "easeInOut" }}
 				>
-					<span className="inline-block px-3 py-1 mb-4 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-700 dark:text-blue-300 text-xs font-semibold tracking-wide border border-blue-200 dark:border-blue-700 shadow-sm">
-						Open for freelance, internships, and full-time roles
-					</span>
-					<h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight font-display mb-2 break-words whitespace-normal">
-						Hi, I'm{" "}
-						<span className="text-primary">
-							Ashish Guleria
-						</span>
+					<div className="relative inline-block mb-8">
+						<motion.div
+							whileHover={{ scale: 1.05 }}
+							transition={{ duration: 0.3 }}
+						>
+							<img
+								src={avatar}
+								alt="Portrait of Ashish Guleria"
+								loading="eager"
+								className="h-48 w-48 rounded-full object-cover shadow-lg"
+							/>
+						</motion.div>
+					</div>
+
+					<h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight font-display mb-4">
+						Hi, I'm <span className="text-primary">Ashish Guleria</span>
 					</h1>
-					<motion.p
-						initial={{ opacity: 0, y: 10 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.2, duration: 0.7 }}
-						className="text-lg sm:text-xl font-semibold text-primary mb-2"
-					>
-						Building digital experiences that matter.
-					</motion.p>
-					<h2 className="text-xl sm:text-2xl font-semibold text-muted-foreground mb-6">
-						Software Engineer & Full Stack Web Developer
-					</h2>
-					<div className="flex flex-wrap gap-3 mb-8">
-						<Button asChild>
+
+					<p className="text-xl sm:text-2xl font-semibold text-muted-foreground mb-8 max-w-3xl mx-auto">
+						I'm a Software Engineer & Full Stack Web Developer building digital experiences that matter.
+					</p>
+
+					<div className="flex justify-center flex-wrap gap-4 mb-12">
+						<Button asChild size="lg">
 							<Link to="/blog">
-								<BookOpen className="size-4 mr-2" />
-								Read the Blog
+								<BookOpen className="size-5 mr-2" />
+								Read The Blog
 							</Link>
 						</Button>
-						<Button asChild variant="secondary">
+						<Button asChild variant="secondary" size="lg">
 							<a
 								href="https://drive.google.com/file/d/1AfCCeVgSXvhjuefcNG3TWm5yYhpFj8uv/view"
 								target="_blank"
 								rel="noopener"
 							>
-								<FileText className="size-4 mr-2" />
+								<FileText className="size-5 mr-2" />
 								Download Resume
 							</a>
 						</Button>
 					</div>
-					<p className="text-base sm:text-lg text-muted-foreground max-w-prose mb-8">
-						I’m Ashish Guleria, a Software Engineer and Full Stack Web Developer passionate about building impactful, user-friendly, and visually appealing digital experiences. I love turning ideas into reality through clean code, creative design, and constant learning.
-					</p>
-					{/* Social Icons */}
-					<div className="flex flex-wrap items-center gap-2 mt-2">
+
+					<div className="flex justify-center flex-wrap items-center gap-4">
 						{SOCIALS.map((s) => (
 							<Button
 								asChild
@@ -285,22 +282,6 @@ const Index = () => {
 								</a>
 							</Button>
 						))}
-					</div>
-				</motion.div>
-				{/* Right: Avatar */}
-				<motion.div
-					initial={{ opacity: 0, x: 24 }}
-					animate={{ opacity: 1, x: 0 }}
-					transition={{ duration: 0.6, delay: 0.1 }}
-					className="w-full md:w-1/2 flex justify-center items-center"
-				>
-					<div className="relative size-40 sm:size-56 md:size-64 rounded-full overflow-hidden shadow-lg">
-						<img
-							src={avatar}
-							alt="Portrait of Ashish Guleria"
-							loading="eager"
-							className="h-full w-full object-cover rounded-full"
-						/>
 					</div>
 				</motion.div>
 			</section>
