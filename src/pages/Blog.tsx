@@ -1,87 +1,64 @@
-import { SEO } from "@/components/SEO";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { Newspaper } from "lucide-react";
-import blog1 from "@/assets/blog1.jpg";
-import blog2 from "@/assets/blog2.jpg";
-import blog3 from "@/assets/blog3.jpg";
+import React from "react";
 
-const posts = [
-  {
-    id: 1,
-    title: "Designing Smooth Theme Transitions",
-    date: "2025-06-24",
-    excerpt:
-      "Learn how to craft elegant dark/light transitions using CSS variables and motion.",
-    image: blog1,
-  },
-  {
-    id: 2,
-    title: "Framer Motion Patterns for React",
-    date: "2025-05-12",
-    excerpt:
-      "Practical animation patterns for cards, lists, and page transitions.",
-    image: blog2,
-  },
-  {
-    id: 3,
-    title: "Building Accessible, Animated Buttons",
-    date: "2025-04-05",
-    excerpt:
-      "Balancing flair with usability: focus rings, reduced motion, and more.",
-    image: blog3,
-  },
-];
+const BLOG_URL = "https://aashiishh.hashnode.dev/";
 
-const Blog = () => {
+export default function Blog() {
   return (
-    <main className="min-h-screen">
-      <SEO
-        title="Blog | Thoughts on Design & Dev"
-        description="Clean, minimalist blog with smooth fade-in animations on scroll."
-        type="website"
-      />
-      <section className="container mx-auto py-16">
-        <header className="mb-10">
-          <h1 className="text-4xl font-extrabold tracking-tight font-display">Blog</h1>
-          <p className="mt-2 text-muted-foreground">Notes on design systems, motion, and modern frontend.</p>
-          <div className="mt-3">
-            <Button asChild variant="outline" className="hover-scale">
-              <a href="https://aashiishh.hashnode.dev/" target="_blank" rel="noopener" aria-label="Read more on Ashish's Hashnode blog">
-                <Newspaper className="mr-2" /> Visit my external blog
-              </a>
-            </Button>
-          </div>
-        </header>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((p, idx) => (
-            <motion.article
-              key={p.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: idx * 0.05 }}
+    <main className="container mx-auto py-16 px-4">
+      <header className="max-w-3xl mx-auto text-center mb-10">
+        <h1 className="text-4xl sm:text-5xl font-extrabold mb-3 text-foreground dark:text-white">
+          Blog
+        </h1>
+        <p className="text-muted-foreground max-w-2xl mx-auto dark:text-zinc-300">
+          My technical posts and notes live on Hashnode. Follow the link below to read my latest articles.
+        </p>
+      </header>
+
+      <section className="max-w-3xl mx-auto grid gap-6">
+        <div className="rounded-2xl p-6
+                        bg-white/70 dark:bg-zinc-900/60
+                        supports-[backdrop-filter]:backdrop-blur-md
+                        border border-gray-200/20 dark:border-gray-700/40
+                        shadow-lg">
+          <h2 className="text-2xl font-semibold mb-3 text-foreground dark:text-white">
+            Ashish Guleria — Hashnode
+          </h2>
+          <p className="text-sm text-muted-foreground mb-4 dark:text-zinc-300">
+            All posts are published on my Hashnode blog. Click the button to open my blog in a new tab.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+            <a
+              href={BLOG_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-medium shadow-md transition-all duration-200
+                         bg-primary text-white hover:bg-primary/90
+                         dark:bg-white dark:text-black dark:hover:bg-gray-200
+                         focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
             >
-              <Card className="overflow-hidden border-0 bg-card/70 backdrop-blur supports-[backdrop-filter]:bg-card/60 shadow-elevated hover:shadow-glow transition-shadow">
-                <img
-                  src={p.image}
-                  alt={`${p.title} cover image`}
-                  loading="lazy"
-                  className="aspect-video w-full object-cover"
-                />
-                <CardContent className="py-5">
-                  <time className="text-xs text-muted-foreground">{new Date(p.date).toLocaleDateString()}</time>
-                  <h2 className="mt-2 text-lg font-semibold leading-tight font-display">{p.title}</h2>
-                  <p className="mt-2 text-sm text-muted-foreground">{p.excerpt}</p>
-                </CardContent>
-              </Card>
-            </motion.article>
-          ))}
+              Visit my Hashnode blog
+            </a>
+
+            <a
+              href={BLOG_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors dark:text-zinc-300"
+              aria-label="Open Hashnode blog"
+            >
+              Open in new tab
+            </a>
+          </div>
+        </div>
+
+        <div className="text-sm text-muted-foreground dark:text-zinc-300">
+          <p>
+            Note: this site links to external content hosted on Hashnode. If you want posts embedded here
+            in the future, I can add an RSS/proxy-based fetch and list articles directly.
+          </p>
         </div>
       </section>
     </main>
   );
-};
-
-export default Blog;
+}
