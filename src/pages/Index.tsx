@@ -28,9 +28,6 @@ import {
 	TabsTrigger,
 } from "@/components/ui/tabs";
 import { ProjectCard } from "@/components/ProjectCard";
-import project1 from "@/assets/project1.jpg";
-import project2 from "@/assets/project2.jpg";
-import project3 from "@/assets/project3.jpg";
 
 const SOCIALS = [
 	{
@@ -71,35 +68,30 @@ const ADVANCED_PROJECTS = [
 		desc: "A modern knowledge-sharing platform for curious minds to ask, answer, and discover.",
 		url: "https://github.com/ashishguleria04/Curio",
 		tags: ["React", "Node.js"],
-		image: project1,
 	},
 	{
 		name: "Multimodal Vision Language Model",
 		desc: "Combines vision and language models for advanced AI applications.",
 		url: "https://github.com/ashishguleria04/Multimodal-Vision-Language-Model",
 		tags: ["Python", "AI"],
-		image: project2,
 	},
 	{
 		name: "Project Certify",
 		desc: "A certificate generator and management tool for events and organizations.",
 		url: "https://github.com/ashishguleria04/Project-Certify",
 		tags: ["Python", "Flask"],
-		image: project3,
 	},
 	{
 		name: "IdeaLab",
 		desc: "A collaborative platform for brainstorming and sharing innovative ideas.",
 		url: "https://github.com/ashishguleria04/IdeaLab",
 		tags: ["React", "Node.js"],
-		image: project1,
 	},
 	{
 		name: "SHEild – Women Safety at Workplaces",
 		desc: "A platform to report and address workplace safety concerns for women.",
 		url: "https://github.com/ashishguleria04/sexual-harassment",
 		tags: ["React", "Node.js"],
-		image: project2,
 	},
 ];
 
@@ -109,35 +101,30 @@ const INTERMEDIATE_PROJECTS = [
 		desc: "A beautiful, responsive login page built with Tailwind CSS and React.",
 		url: "https://github.com/ashishguleria04/loginpage-tailwindcss",
 		tags: ["React", "Tailwind"],
-		image: project3,
 	},
 	{
 		name: "Website Performance Analyzer Extension",
 		desc: "A browser extension to analyze and improve website performance metrics.",
 		url: "https://github.com/ashishguleria04/Website-Performance-Analyzer-Extension",
 		tags: ["JavaScript", "Extension"],
-		image: project1,
 	},
 	{
 		name: "HeySpeakers",
 		desc: "A web app for organizing and managing speaker sessions and events.",
 		url: "https://github.com/ashishguleria04/heyspeakers",
 		tags: ["React"],
-		image: project2,
 	},
 	{
 		name: "Editro Flask Image Editor",
 		desc: "A simple image editor built with Flask for quick edits and filters.",
 		url: "https://github.com/ashishguleria04/Editro-Flask-Img-Editor",
 		tags: ["Python", "Flask"],
-		image: project3,
 	},
 	{
 		name: "Simple Ad Blocker",
 		desc: "A lightweight browser extension to block intrusive ads.",
 		url: "https://github.com/ashishguleria04/simple-ad-blocker",
 		tags: ["JavaScript", "Extension"],
-		image: project1,
 	},
 ];
 
@@ -147,35 +134,30 @@ const BASIC_PROJECTS = [
 		desc: "A Python tool to plot and analyze straight lines and their equations.",
 		url: "https://github.com/ashishguleria04/Straight-Line-In-Python",
 		tags: ["Python"],
-		image: project2,
 	},
 	{
 		name: "Python QR Code Generator",
 		desc: "Generate QR codes easily with this Python-based tool.",
 		url: "https://github.com/ashishguleria04/python-QR-Code-Generator",
 		tags: ["Python"],
-		image: project3,
 	},
 	{
 		name: "Python Chatbot",
 		desc: "An interactive chatbot built in Python for basic conversations.",
 		url: "https://github.com/ashishguleria04/Python-Chatbot",
 		tags: ["Python"],
-		image: project1,
 	},
 	{
 		name: "Snake Game",
 		desc: "Classic snake game recreated in Python with a modern UI.",
 		url: "https://github.com/ashishguleria04/snake-game",
 		tags: ["Python"],
-		image: project2,
 	},
 	{
 		name: "Odin Landing Page",
 		desc: "A clean and responsive landing page project for The Odin Project curriculum.",
 		url: "https://github.com/ashishguleria04/odin-landing-page",
 		tags: ["HTML", "CSS"],
-		image: project3,
 	},
 ];
 
@@ -310,7 +292,6 @@ const Index = () => {
 									title={proj.name}
 									description={proj.desc}
 									tags={proj.tags}
-									image={proj.image}
 									href={proj.url}
 								/>
 							))}
@@ -324,7 +305,6 @@ const Index = () => {
 									title={proj.name}
 									description={proj.desc}
 									tags={proj.tags}
-									image={proj.image}
 									href={proj.url}
 								/>
 							))}
@@ -338,7 +318,6 @@ const Index = () => {
 									title={proj.name}
 									description={proj.desc}
 									tags={proj.tags}
-									image={proj.image}
 									href={proj.url}
 								/>
 							))}
