@@ -5,6 +5,7 @@ interface SEOProps {
   description?: string;
   canonical?: string;
   type?: string;
+  image?: string; // Add support for an image
 }
 
 export const SEO = ({
@@ -12,6 +13,7 @@ export const SEO = ({
   description = "Ashish Guleria's modern, responsive portfolio with projects, blog, and contact.",
   canonical,
   type = "website",
+  image = `${window.location.origin}/assets/avatar.jpg`, // Default image
 }: SEOProps) => {
   useEffect(() => {
     document.title = title;
@@ -29,9 +31,23 @@ export const SEO = ({
       el.setAttribute("content", content);
     };
 
+    // General Meta Tags
     setMeta("description", description);
-    setMeta("twitter:card", "summary_large_image");
 
+    // Open Graph Meta Tags
+    setMeta("og:title", title, true);
+    setMeta("og:description", description, true);
+    setMeta("og:type", type, true);
+    setMeta("og:url", canonical || window.location.href, true);
+    setMeta("og:image", image, true);
+
+    // Twitter Meta Tags
+    setMeta("twitter:card", "summary_large_image");
+    setMeta("twitter:title", title);
+    setMeta("twitter:description", description);
+    setMeta("twitter:image", image);
+
+    // Canonical URL
     const url = canonical || window.location.href;
     let link = document.querySelector<HTMLLinkElement>("link[rel='canonical']");
     if (!link) {
@@ -40,7 +56,7 @@ export const SEO = ({
       document.head.appendChild(link);
     }
     link.setAttribute("href", url);
-  }, [title, description, canonical, type]);
+  }, [title, description, canonical, type, image]);
 
   return null;
 };
