@@ -52,12 +52,7 @@ export default function Blog() {
           </div>
         </div>
 
-        <div className="text-sm text-muted-foreground dark:text-zinc-300">
-          <p>
-            Note: this site links to external content hosted on Hashnode. If you want posts embedded here
-            in the future, I can add an RSS/proxy-based fetch and list articles directly.
-          </p>
-        </div>
+        
       </section>
     </main>
   );
