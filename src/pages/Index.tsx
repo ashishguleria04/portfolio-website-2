@@ -216,7 +216,7 @@ const Index = () => {
 			{/* Hero */}
 			<section
 				id="home"
-				className="container mx-auto pt-32 pb-24 text-center relative min-h-[90vh] flex flex-col justify-center items-center"
+				className="container mx-auto pt-24 pb-24 text-center relative"
 			>
                 {/* Status Badge */}
                 <motion.div
