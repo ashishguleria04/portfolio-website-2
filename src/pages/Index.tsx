@@ -18,15 +18,11 @@ import {
 	SiHtml5,
 	SiCss3,
 	SiJavascript,
+	SiPostgresql,
+	SiMongodb,
 } from "react-icons/si";
 import avatar from "@/assets/avatar.jpg";
 import { useRef } from "react";
-import {
-	Tabs,
-	TabsContent,
-	TabsList,
-	TabsTrigger,
-} from "@/components/ui/tabs";
 import { ProjectCard } from "@/components/ProjectCard";
 
 const SOCIALS = [
@@ -63,6 +59,24 @@ const SOCIALS = [
 ];
 
 const ADVANCED_PROJECTS = [
+	{
+		name: "Advanced B2B Billing",
+		desc: "A robust, production-ready starter kit for building B2B SaaS applications with advanced billing patterns, multi-tenancy, and team management.",
+		url: "https://github.com/ashishguleria04/Advanced-B2B-Billing",
+		tags: ["Next.js", "Stripe", "Drizzle", "Tailwind"],
+	},
+	{
+		name: "MockSocial",
+		desc: "A powerful tool designed to create high-fidelity social media and chat mockups for developers and designers.",
+		url: "https://github.com/ashishguleria04/MockSocial",
+		tags: ["Next.js", "Tailwind", "Framer Motion"],
+	},
+	{
+		name: "Quantalyze Habit Tracker",
+		desc: "A minimalistic habit tracker designed to optimize vitality, focus, discipline, and social connection.",
+		url: "https://github.com/ashishguleria04/quantalyze-habit-tracker",
+		tags: ["React", "TypeScript", "Tailwind"],
+	},
 	{
 		name: "Curio",
 		desc: "A modern knowledge-sharing platform for curious minds to ask, answer, and discover.",
@@ -168,6 +182,8 @@ const SKILLS = [
 	{ name: "Python", icon: <SiPython size={28} /> },
 	{ name: "Flask", icon: <SiFlask size={28} /> },
 	{ name: "Tailwind CSS", icon: <SiTailwindcss size={28} /> },
+	{ name: "PostgreSQL", icon: <SiPostgresql size={28} /> },
+	{ name: "MongoDB", icon: <SiMongodb size={28} /> },
 	{ name: "Framer Motion", icon: <SiFramer size={28} /> },
 	{ name: "Git", icon: <SiGit size={28} /> },
 	{ name: "HTML5", icon: <SiHtml5 size={28} /> },
@@ -269,22 +285,20 @@ const Index = () => {
 			</section>
 
 			{/* Projects */}
-			<section id="projects" className="container mx-auto py-16">
-				<header className="mb-8 text-center">
+			<section id="projects" className="container mx-auto py-16 px-4">
+				<header className="mb-12 text-center">
 					<h2 className="text-3xl font-bold tracking-tight font-display">
 						Featured Projects
 					</h2>
 					<p className="text-muted-foreground mt-2">
-						A selection of my favorite work.
+						A selection of my favorite work, from advanced to basic.
 					</p>
 				</header>
-				<Tabs defaultValue="advanced" className="w-full">
-					<TabsList className="grid w-full grid-cols-3 max-w-md mx-auto">
-						<TabsTrigger value="advanced">Advanced</TabsTrigger>
-						<TabsTrigger value="intermediate">Intermediate</TabsTrigger>
-						<TabsTrigger value="basic">Basic</TabsTrigger>
-					</TabsList>
-					<TabsContent value="advanced" className="py-6">
+				
+				<div className="space-y-16">
+					{/* Advanced Projects */}
+					<div>
+						<h3 className="text-2xl font-bold mb-6 border-b pb-2 inline-block">Advanced</h3>
 						<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 							{ADVANCED_PROJECTS.map((proj) => (
 								<ProjectCard
@@ -296,8 +310,11 @@ const Index = () => {
 								/>
 							))}
 						</div>
-					</TabsContent>
-					<TabsContent value="intermediate" className="py-6">
+					</div>
+
+					{/* Intermediate Projects */}
+					<div>
+						<h3 className="text-2xl font-bold mb-6 border-b pb-2 inline-block">Intermediate</h3>
 						<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 							{INTERMEDIATE_PROJECTS.map((proj) => (
 								<ProjectCard
@@ -309,8 +326,11 @@ const Index = () => {
 								/>
 							))}
 						</div>
-					</TabsContent>
-					<TabsContent value="basic" className="py-6">
+					</div>
+
+					{/* Basic Projects */}
+					<div>
+						<h3 className="text-2xl font-bold mb-6 border-b pb-2 inline-block">Basic</h3>
 						<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 							{BASIC_PROJECTS.map((proj) => (
 								<ProjectCard
@@ -322,8 +342,8 @@ const Index = () => {
 								/>
 							))}
 						</div>
-					</TabsContent>
-				</Tabs>
+					</div>
+				</div>
 			</section>
 
 			{/* Skills */}
