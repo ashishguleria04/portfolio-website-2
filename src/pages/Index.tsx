@@ -29,32 +29,32 @@ const SOCIALS = [
 	{
 		href: "mailto:guleriaashish85@gmail.com",
 		label: "Email",
-		icon: <Mail className="size-5" />,
+		icon: <Mail className="size-6" />,
 	},
 	{
 		href: "https://www.linkedin.com/in/ashish-guleria04/",
 		label: "LinkedIn",
-		icon: <Linkedin className="size-5" />,
+		icon: <Linkedin className="size-6" />,
 	},
 	{
 		href: "https://github.com/ashishguleria04",
 		label: "GitHub",
-		icon: <Github className="size-5" />,
+		icon: <Github className="size-6" />,
 	},
 	{
 		href: "https://x.com/ashishguleria_",
 		label: "X (Twitter)",
-		icon: <FaXTwitter className="size-5" />,
+		icon: <FaXTwitter className="size-6" />,
 	},
 	{
 		href: "https://leetcode.com/u/aashiishh_/",
 		label: "LeetCode",
-		icon: <SiLeetcode className="size-5" />,
+		icon: <SiLeetcode className="size-6" />,
 	},
 	{
 		href: "https://www.geeksforgeeks.org/user/ashishguleria04/",
 		label: "GeeksforGeeks",
-		icon: <SiGeeksforgeeks className="size-5" />,
+		icon: <SiGeeksforgeeks className="size-6" />,
 	},
 ];
 
@@ -290,7 +290,7 @@ const Index = () => {
 								size="icon"
 								aria-label={s.label}
 								title={s.label}
-								className="rounded-full hover:bg-primary/10 hover:text-primary transition-colors h-11 w-11"
+								className="rounded-full hover:bg-primary/10 hover:text-primary transition-colors h-12 w-12"
 								key={s.label}
 							>
 								<a href={s.href} target="_blank" rel="noopener">
