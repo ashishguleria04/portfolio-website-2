@@ -2,7 +2,7 @@
 
 A slick and professional personal portfolio website showcasing my work, skills, and projects.  
 
-**Live Site:** [ashishguleria.tech]https://ashishguleria.tech  
+**Live Site:** [ashishguleria.tech](https://ashishguleria.tech)  
 **Repository:** [GitHub](https://github.com/ashishguleria04/portfolio-website-2)  
 
 ---
