@@ -2,7 +2,7 @@
 
 A slick and professional personal portfolio website showcasing my work, skills, and projects.  
 
-**Live Site:** [ashish-guleria.vercel.app](https://ashish-guleria.vercel.app/)  
+**Live Site:** [ashishguleria.tech]https://ashishguleria.tech  
 **Repository:** [GitHub](https://github.com/ashishguleria04/portfolio-website-2)  
 
 ---
@@ -51,3 +51,6 @@ A slick and professional personal portfolio website showcasing my work, skills, 
 ## License
 
 This project is licensed under the MIT License.
+
+
+[def]: https://ashishguleria.tech/
