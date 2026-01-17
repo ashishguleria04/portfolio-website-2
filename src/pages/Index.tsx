@@ -216,63 +216,81 @@ const Index = () => {
 			{/* Hero */}
 			<section
 				id="home"
-				className="container mx-auto pt-24 pb-20 text-center"
+				className="container mx-auto pt-32 pb-24 text-center relative min-h-[90vh] flex flex-col justify-center items-center"
 			>
+                {/* Status Badge */}
+                <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="mb-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm"
+                >
+                    <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    <span className="text-sm font-medium text-primary/80">Available for new projects</span>
+                </motion.div>
+
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8, ease: "easeInOut" }}
+					transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="max-w-4xl mx-auto"
 				>
-					<div className="relative inline-block mb-8">
+					<div className="relative inline-block mb-10 group">
+                        {/* Soft Glow */}
+                        <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-110 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 						<motion.div
-							whileHover={{ scale: 1.05 }}
-							transition={{ duration: 0.3 }}
+							whileHover={{ scale: 1.02 }}
+							transition={{ duration: 0.4 }}
+                            className="relative z-10"
 						>
 							<img
 								src={avatar}
 								alt="Portrait of Ashish Guleria"
 								loading="eager"
-								className="h-48 w-48 rounded-full object-cover shadow-lg"
+								className="h-40 w-40 sm:h-48 sm:w-48 rounded-full object-cover shadow-2xl ring-4 ring-background/50"
 							/>
 						</motion.div>
 					</div>
 
-					<h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight font-display mb-4">
-						Hi, I'm <span className="text-primary">Ashish Guleria</span>
+					<h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-display mb-6">
+						Hi, I'm <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-600 to-primary bg-300% animate-gradient">Ashish Guleria</span>
 					</h1>
 
-					<p className="text-xl sm:text-2xl font-semibold text-muted-foreground mb-8 max-w-3xl mx-auto">
-						I'm a Software Engineer & Full Stack Web Developer building digital experiences that matter.
+					<p className="text-xl sm:text-2xl font-light text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+						Software Engineer & Full Stack Web Developer crafting <span className="text-foreground font-medium">exceptional digital experiences</span> with precision and passion.
 					</p>
 
-					<div className="flex justify-center flex-wrap gap-4 mb-12">
-						<Button asChild size="lg">
+					<div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-14">
+						<Button asChild size="lg" className="h-12 px-8 rounded-full text-base shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all">
 							<Link to="/blog">
-								<BookOpen className="size-5 mr-2" />
+								<BookOpen className="size-4 mr-2" />
 								Read The Blog
 							</Link>
 						</Button>
-						<Button asChild variant="secondary" size="lg">
+						<Button asChild variant="outline" size="lg" className="h-12 px-8 rounded-full text-base bg-background/50 backdrop-blur-sm hover:bg-background/80">
 							<a
 								href="https://drive.google.com/file/d/1AfCCeVgSXvhjuefcNG3TWm5yYhpFj8uv/view"
 								target="_blank"
 								rel="noopener"
 							>
-								<FileText className="size-5 mr-2" />
+								<FileText className="size-4 mr-2" />
 								Download Resume
 							</a>
 						</Button>
 					</div>
 
-					<div className="flex justify-center flex-wrap items-center gap-4">
+					<div className="flex justify-center flex-wrap items-center gap-3 mb-12">
 						{SOCIALS.map((s) => (
 							<Button
 								asChild
-								variant="outline"
+								variant="ghost"
 								size="icon"
 								aria-label={s.label}
 								title={s.label}
-								className="transition-all hover:scale-110 hover:bg-primary/10 focus-visible:ring-2 focus-visible:ring-primary"
+								className="rounded-full hover:bg-primary/10 hover:text-primary transition-colors h-11 w-11"
 								key={s.label}
 							>
 								<a href={s.href} target="_blank" rel="noopener">
@@ -282,6 +300,16 @@ const Index = () => {
 						))}
 					</div>
 				</motion.div>
+
+                {/* Scroll Indicator */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1, duration: 1 }}
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2"
+                >
+                    <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-muted-foreground/50 to-transparent"></div>
+                </motion.div>
 			</section>
 
 			{/* Projects */}
