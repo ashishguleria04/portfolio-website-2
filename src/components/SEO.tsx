@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
   title: string;
@@ -15,48 +15,27 @@ export const SEO = ({
   type = "website",
   image = `${window.location.origin}/assets/avatar.jpg`, // Default image
 }: SEOProps) => {
-  useEffect(() => {
-    document.title = title;
+  const url = canonical || window.location.href;
 
-    const setMeta = (name: string, content: string, prop = false) => {
-      let el = document.querySelector<HTMLMetaElement>(
-        prop ? `meta[property='${name}']` : `meta[name='${name}']`
-      );
-      if (!el) {
-        el = document.createElement("meta");
-        if (prop) el.setAttribute("property", name);
-        else el.setAttribute("name", name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
+  return (
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
 
-    // General Meta Tags
-    setMeta("description", description);
+      {/* Open Graph Meta Tags */}
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content={type} />
+      <meta property="og:url" content={url} />
+      <meta property="og:image" content={image} />
 
-    // Open Graph Meta Tags
-    setMeta("og:title", title, true);
-    setMeta("og:description", description, true);
-    setMeta("og:type", type, true);
-    setMeta("og:url", canonical || window.location.href, true);
-    setMeta("og:image", image, true);
+      {/* Twitter Meta Tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={image} />
 
-    // Twitter Meta Tags
-    setMeta("twitter:card", "summary_large_image");
-    setMeta("twitter:title", title);
-    setMeta("twitter:description", description);
-    setMeta("twitter:image", image);
-
-    // Canonical URL
-    const url = canonical || window.location.href;
-    let link = document.querySelector<HTMLLinkElement>("link[rel='canonical']");
-    if (!link) {
-      link = document.createElement("link");
-      link.setAttribute("rel", "canonical");
-      document.head.appendChild(link);
-    }
-    link.setAttribute("href", url);
-  }, [title, description, canonical, type, image]);
-
-  return null;
+      <link rel="canonical" href={url} />
+    </Helmet>
+  );
 };

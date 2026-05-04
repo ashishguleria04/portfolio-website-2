@@ -50,13 +50,9 @@ export const Navbar = () => {
 		e.preventDefault();
 		setMobileOpen(false);
 
-		// If not on homepage, navigate first then scroll after navigation completes
+		// If not on homepage, navigate with state
 		if (location.pathname !== "/") {
-			navigate("/", { replace: false });
-			setTimeout(() => {
-				const el = document.getElementById(id);
-				el?.scrollIntoView({ behavior: "smooth", block: "start" });
-			}, 90);
+			navigate("/", { state: { scrollTo: id } });
 			return;
 		}
 
