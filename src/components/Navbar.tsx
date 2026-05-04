@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useScroll, useMotionValueEvent } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaLinkedin, FaGithub, FaBars, FaXTwitter } from "react-icons/fa6";
 import { ThemeToggle } from "./ThemeToggle";
@@ -17,12 +18,11 @@ export const Navbar = () => {
 	const [mobileOpen, setMobileOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
 
-	useEffect(() => {
-		const onScroll = () => setScrolled(window.scrollY > 8);
-		onScroll();
-		window.addEventListener("scroll", onScroll, { passive: true });
-		return () => window.removeEventListener("scroll", onScroll);
-	}, []);
+	const { scrollY } = useScroll();
+
+	useMotionValueEvent(scrollY, "change", (latest) => {
+		setScrolled(latest > 8);
+	});
 
 	useEffect(() => {
 		if (location.pathname !== "/") return;

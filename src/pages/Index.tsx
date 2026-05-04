@@ -81,6 +81,8 @@ const Index = () => {
 								src={avatar}
 								alt="Portrait of Ashish Guleria"
 								loading="eager"
+								fetchPriority="high"
+								decoding="async"
 								className="h-40 w-40 sm:h-48 sm:w-48 rounded-full object-cover shadow-2xl ring-4 ring-background/50"
 							/>
 						</motion.div>
