@@ -83,7 +83,7 @@ const Index = () => {
 								loading="eager"
 								fetchPriority="high"
 								decoding="async"
-								className="h-48 w-48 sm:h-56 sm:w-56 rounded-full object-cover shadow-2xl ring-4 ring-background/50"
+								className="h-56 w-56 sm:h-64 sm:w-64 rounded-full object-cover shadow-2xl ring-4 ring-background/50"
 							/>
 						</motion.div>
 					</div>
