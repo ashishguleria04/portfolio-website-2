@@ -105,13 +105,15 @@ export const Navbar = () => {
 						</a>
 					))}
 
-					<Link
-						to="/blog"
+					<a
+						href="https://aashiishh.hashnode.dev/"
+						target="_blank"
+						rel="noopener noreferrer"
 						className="relative px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
 						onClick={() => setMobileOpen(false)}
 					>
 						Blog
-					</Link>
+					</a>
 				</div>
 
 				{/* Right side */}
@@ -163,11 +165,12 @@ export const Navbar = () => {
 
 			{/* Mobile panel */}
 			<div
-				className={`md:hidden transform origin-top transition-all duration-200 ${
-					mobileOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"
+				className={`md:hidden grid transition-all duration-300 ease-in-out ${
+					mobileOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0 pointer-events-none"
 				}`}
 			>
-				<div className="px-4 pb-4">
+				<div className="overflow-hidden">
+					<div className="px-4 pb-4">
 					<div className="flex flex-col gap-2 bg-card/70 rounded-md p-3 shadow-md">
 						{sections.map((s) => (
 							<a
@@ -182,10 +185,17 @@ export const Navbar = () => {
 							</a>
 						))}
 
-						<Link to="/blog" onClick={() => setMobileOpen(false)} className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary">
+						<a
+							href="https://aashiishh.hashnode.dev/"
+							target="_blank"
+							rel="noopener noreferrer"
+							onClick={() => setMobileOpen(false)}
+							className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary"
+						>
 							Blog
-						</Link>
+						</a>
 					</div>
+				</div>
 				</div>
 			</div>
 		</header>

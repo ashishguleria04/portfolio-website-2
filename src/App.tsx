@@ -8,7 +8,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { Navbar } from "./components/Navbar";
-import Blog from "./pages/Blog";
 import { inject } from "@vercel/analytics"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
@@ -27,7 +26,6 @@ const App = () => (
           <Navbar />
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/blog" element={<Blog />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

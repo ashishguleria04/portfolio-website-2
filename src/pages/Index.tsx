@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
 import { Link, useLocation } from "react-router-dom";
@@ -8,9 +8,17 @@ import { useState, useEffect } from "react";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SOCIALS, ADVANCED_PROJECTS, INTERMEDIATE_PROJECTS, BASIC_PROJECTS, SKILLS } from "@/data/portfolio";
 
+const ALL_PROJECTS = [...ADVANCED_PROJECTS, ...INTERMEDIATE_PROJECTS, ...BASIC_PROJECTS];
+const FILTER_TAGS = ["All", "React", "Next.js", "Python", "Node.js", "Tailwind"];
+
 const Index = () => {
 	const [copied, setCopied] = useState(false);
+	const [activeFilter, setActiveFilter] = useState("All");
 	const location = useLocation();
+
+	const filteredProjects = activeFilter === "All" 
+		? ALL_PROJECTS 
+		: ALL_PROJECTS.filter(p => p.tags.includes(activeFilter));
 
 	useEffect(() => {
 		if (location.state && location.state.scrollTo) {
@@ -88,10 +96,10 @@ const Index = () => {
 
 					<div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-14">
 						<Button asChild size="lg" className="h-12 px-8 rounded-full text-base shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all">
-							<Link to="/blog">
+							<a href="https://aashiishh.hashnode.dev/" target="_blank" rel="noopener noreferrer">
 								<BookOpen className="size-4 mr-2" />
 								Read The Blog
-							</Link>
+							</a>
 						</Button>
 						<Button asChild variant="outline" size="lg" className="h-12 px-8 rounded-full text-base bg-background/50 backdrop-blur-sm hover:bg-background/80">
 							<a
@@ -142,59 +150,48 @@ const Index = () => {
 						Featured Projects
 					</h2>
 					<p className="text-muted-foreground mt-2">
-						A selection of my favorite work, from advanced to basic.
+						A selection of my favorite work. Use the filters below to explore.
 					</p>
 				</header>
 				
-				<div className="space-y-16">
-					{/* Advanced Projects */}
-					<div>
-						<h3 className="text-2xl font-bold mb-6 border-b pb-2 inline-block">Advanced</h3>
-						<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-							{ADVANCED_PROJECTS.map((proj) => (
-								<ProjectCard
-									key={proj.name}
-									title={proj.name}
-									description={proj.desc}
-									tags={proj.tags}
-									href={proj.url}
-								/>
-							))}
-						</div>
-					</div>
-
-					{/* Intermediate Projects */}
-					<div>
-						<h3 className="text-2xl font-bold mb-6 border-b pb-2 inline-block">Intermediate</h3>
-						<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-							{INTERMEDIATE_PROJECTS.map((proj) => (
-								<ProjectCard
-									key={proj.name}
-									title={proj.name}
-									description={proj.desc}
-									tags={proj.tags}
-									href={proj.url}
-								/>
-							))}
-						</div>
-					</div>
-
-					{/* Basic Projects */}
-					<div>
-						<h3 className="text-2xl font-bold mb-6 border-b pb-2 inline-block">Basic</h3>
-						<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-							{BASIC_PROJECTS.map((proj) => (
-								<ProjectCard
-									key={proj.name}
-									title={proj.name}
-									description={proj.desc}
-									tags={proj.tags}
-									href={proj.url}
-								/>
-							))}
-						</div>
-					</div>
+				<div className="flex flex-wrap justify-center gap-3 mb-12">
+					{FILTER_TAGS.map(tag => (
+						<Button 
+							key={tag}
+							variant={activeFilter === tag ? "default" : "outline"}
+							onClick={() => setActiveFilter(tag)}
+							className="rounded-full transition-all duration-300"
+							size="sm"
+						>
+							{tag}
+						</Button>
+					))}
 				</div>
+
+				<motion.div 
+					layout
+					className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+				>
+					<AnimatePresence mode="popLayout">
+						{filteredProjects.map((proj) => (
+							<motion.div
+								key={proj.name}
+								layout
+								initial={{ opacity: 0, scale: 0.9 }}
+								animate={{ opacity: 1, scale: 1 }}
+								exit={{ opacity: 0, scale: 0.9 }}
+								transition={{ duration: 0.2 }}
+							>
+								<ProjectCard
+									title={proj.name}
+									description={proj.desc}
+									tags={proj.tags}
+									href={proj.url}
+								/>
+							</motion.div>
+						))}
+					</AnimatePresence>
+				</motion.div>
 			</section>
 
 			{/* Skills */}
