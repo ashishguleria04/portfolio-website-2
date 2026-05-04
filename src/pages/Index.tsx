@@ -75,7 +75,7 @@ const Index = () => {
 						<motion.div
 							whileHover={{ scale: 1.02 }}
 							transition={{ duration: 0.4 }}
-                            className="relative z-10"
+                            className="relative z-10 h-48 w-48 sm:h-56 sm:w-56 lg:h-64 lg:w-64 rounded-full shadow-2xl ring-4 ring-background/50 overflow-hidden"
 						>
 							<img
 								src={avatar}
@@ -83,7 +83,7 @@ const Index = () => {
 								loading="eager"
 								fetchPriority="high"
 								decoding="async"
-								className="h-40 w-40 sm:h-48 sm:w-48 rounded-full object-cover shadow-2xl ring-4 ring-background/50"
+								className="h-full w-full object-cover scale-[1.35] origin-[60%_35%]"
 							/>
 						</motion.div>
 					</div>
