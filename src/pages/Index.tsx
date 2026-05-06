@@ -88,7 +88,7 @@ const Index = () => {
 						</motion.div>
 					</div>
 
-					<h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-display mb-6 whitespace-nowrap">
+					<h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-display mb-6">
 						Hi, I'm <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-600 to-primary bg-300% animate-gradient">Ashish Guleria</span>
 					</h1>
 
